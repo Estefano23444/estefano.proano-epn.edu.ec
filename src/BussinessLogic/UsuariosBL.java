@@ -11,14 +11,14 @@ import Framework.AppException;
 
 public class UsuariosBL {
     
-    public List<Usuarios>getAllParroquia() throws AppException{
+    public List<Usuarios>getAllUsuarios() throws AppException{
         try {
             UsuariosDAC    usuariosDAC    = new UsuariosDAC();
             List<Usuarios> lstUsuarios    = new ArrayList<Usuarios>();
 
-            ResultSet rs =  usuariosDAC.getAllParroquia();
+            ResultSet rs =  usuariosDAC.getAllUsers();
             while(rs.next())    {
-                Usuarios us = new Usuarios(rs.getString("USUARIO"),  rs.getString("CONTRASENA"));                
+                Usuarios us = new Usuarios(rs.getString("USUARIOS"),  rs.getString("CONTRASENA"));                
                 lstUsuarios.add(us);
             }
             return lstUsuarios; 

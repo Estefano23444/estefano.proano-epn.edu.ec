@@ -1,5 +1,4 @@
 package DataAccess;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -10,12 +9,12 @@ import java.sql.Statement;
  * <b> SQLiteDataHelper, </b> permite la gestion y el acceso a los datos a una base de datos SQLite3
  */
 public abstract class SQLiteDataHelper {
-    private static String DBPathConnection = "jdbc:sqlite:data\\Local.db";
+    private static String DBPathConnection = "jdbc:sqlite:data\\Usuarios.db";
     private static Connection conn = null;
     public SQLiteDataHelper(String  dbPathConnection){
         // Definir la cadena de conneccion : jdbc:sqlite:data\\TinderPet.db
         if (!dbPathConnection.isEmpty())
-            SQLiteDataHelper.DBPathConnection = "jdbc:sqlite:data\\Local.db"; //dbPathConnection
+            SQLiteDataHelper.DBPathConnection = "jdbc:sqlite:data\\Usuarios.db"; //dbPathConnection
     }
     /**
      * getDBConnection, obtiene el cadena de coneccion a la base de datos

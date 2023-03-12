@@ -21,7 +21,6 @@ public class DataHelper {
     return connection;
   }
 }
-
 /**
  * Este código utiliza el controlador JDBC para conectarse a una 
  * base de datos en la nube. Puedes reemplazar los valores DB_CONNECTION, 

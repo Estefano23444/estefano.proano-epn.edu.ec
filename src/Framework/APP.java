@@ -1,6 +1,6 @@
 package Framework;
 /**
- * Definición de variables globales constantes 
+ * Definiciï¿½n de variables globales constantes 
  * Configuraciones del estado de aplicacion
  * singleton with enum
  */
@@ -16,8 +16,8 @@ public enum APP {
      
     APP(){
         //Configuraciones del estado de aplicacion
-        EXCEPTION_UNDEFINED_CLASS   = "Excepción sin decripción de clase ";
-        EXCEPTION_UNDEFINED         = "Excepción sin decripción";
+        EXCEPTION_UNDEFINED_CLASS   = "Excepcion sin decripcion de clase ";
+        EXCEPTION_UNDEFINED         = "Excepcion sin decripcion";
         LOG_ON_OFF          = true;
         PI                  = 1.14;
     }

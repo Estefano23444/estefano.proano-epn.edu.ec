@@ -26,24 +26,19 @@ public class UsuariosDAC extends SQLiteDataHelper {
                 return getResultSet(sql);
             } 
             catch (SQLException e) {
-                throw new AppException(e, getClass(), "getAllPais()");
+                throw new AppException(e, getClass(), "getAllUsers()");
             }
         }
 
-    /**
-     * 
-     * @param Nombre
-     * @return
-     * @throws AppException
-     */
-    public ResultSet getPaisByNombre(String Nombre) throws AppException { 
+
+    public ResultSet getUserComper(String User) throws AppException { 
         try {
-            String sql = "SELECT ID_LOCALIDAD, ID_LOCALIDAD_TIPO, NOMBRE, ESTADO "
+            String sql = "SELECT USUARIOS"
                         +"FROM LOCALIDAD "
-                        +"WHERE NOMBRE LIKE ? ";    
+                        +"WHERE USUARIOS LIKE ? ";    
             Connection conn = getConnection();
             PreparedStatement pstmt  = conn.prepareStatement(sql);
-            pstmt.setString(1, "%" + Nombre.trim() + "%");
+            pstmt.setString(1, "%" + User.trim() + "%");
             //System.out.println(sql);
             return pstmt.executeQuery();
         } 
