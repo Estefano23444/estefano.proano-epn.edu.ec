@@ -8,6 +8,10 @@ public class Usuarios {
         this.epUsuario = epUsuario;
         this.epContrasena = epContrasena;
     }
+    
+    public Usuarios(String string) {
+    }
+
     public String getEpUsuario() {
         return epUsuario;
     }

@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 import BussinessLogic.Entities.Usuarios;
 import DataAccess.UsuariosDAC;
 import Framework.AppException;
@@ -23,7 +24,7 @@ public class UsuariosBL {
             }
             return lstUsuarios; 
         } catch (SQLException e) {
-            throw new AppException(e, getClass(),"getAllParroquia");
+            throw new AppException(e, getClass(),"getAllUsers");
         }
     }
 }

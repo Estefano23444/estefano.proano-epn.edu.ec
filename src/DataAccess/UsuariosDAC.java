@@ -34,7 +34,7 @@ public class UsuariosDAC extends SQLiteDataHelper {
     public ResultSet getUserComper(String User) throws AppException { 
         try {
             String sql = "SELECT USUARIOS"
-                        +"FROM LOCALIDAD "
+                        +"FROM USUARIOS"
                         +"WHERE USUARIOS LIKE ? ";    
             Connection conn = getConnection();
             PreparedStatement pstmt  = conn.prepareStatement(sql);

@@ -2,6 +2,9 @@ package BussinessLogic;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import BussinessLogic.Entities.Usuarios;
+import Framework.AppException;
+
 
 public class LoginWindow extends JFrame implements ActionListener {
 
@@ -39,18 +42,40 @@ public class LoginWindow extends JFrame implements ActionListener {
         add(panel);
     }
 
+    private int intentos = 0;
+
     @Override
     public void actionPerformed(ActionEvent e) {
         // Obtiene el usuario y la contraseña ingresados por el usuario
         String username = usernameField.getText();
         String password = String.valueOf(passwordField.getPassword());
-
+    
         // Verifica si el usuario y la contraseña son válidos
-        if (username.equals("usuario") && password.equals("contraseña")) {
-            JOptionPane.showMessageDialog(this, "Bienvenido " + username + "!");
-            dispose(); // cierra la ventana de inicio de sesión
-        } else {
-            JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos.");
+        UsuariosBL usuarios = new UsuariosBL();
+        boolean usuarioEncontrado = false;
+        try {
+            for (Usuarios user : usuarios.getAllUsuarios()) {
+                if (username.equals(user.getEpUsuario()) && password.equals(user.getEpContrasena())) {
+                    JOptionPane.showMessageDialog(this, "Bienvenido " + username + "!");
+                    dispose(); // cierra la ventana de inicio de sesión
+                    usuarioEncontrado = true;
+                    break;
+                }
+            }
+        } catch (AppException e1) {
+            e1.printStackTrace();
+        }
+    
+        // Incrementa el contador de intentos si el usuario no es válido
+        if (!usuarioEncontrado) {
+            intentos++;
+            if (intentos >= 3) {
+                JOptionPane.showMessageDialog(this, "Has alcanzado el número máximo de intentos permitidos.");
+                dispose(); // cierra la ventana de inicio de sesión
+            } else {
+                JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos. Inténtalo de nuevo.");
+            }
         }
     }
+    
 }
