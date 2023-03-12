@@ -1,5 +1,5 @@
 //import BussinessLogic.LoginWindow;
-import BussinessLogic.Entities.Usuarios;
+import BussinessLogic.Entities.*;
 import Framework.AppException;
 import BussinessLogic.*;
 
