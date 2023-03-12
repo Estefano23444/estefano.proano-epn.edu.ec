@@ -9,18 +9,17 @@ import Framework.AppConfiguration;
 import Framework.AppException;
 
 public class UsuariosDAC extends SQLiteDataHelper {
-
+    
     public UsuariosDAC() {
         super(AppConfiguration.getDBPathConnection());
     }
 
-    // --------------------------------------------------------------------------------------
     /**
      * 
      * @return
      * @throws AppException
      */
-    public ResultSet getAllUsers() throws AppException {
+    public ResultSet epGetAllUsers() throws AppException {
         try {
             String sql = "SELECT * "
                     + "FROM   USUARIOS ";
@@ -30,7 +29,13 @@ public class UsuariosDAC extends SQLiteDataHelper {
         }
     }
 
-    public ResultSet getUserComper(String User) throws AppException {
+    /**
+     * 
+     * @param User
+     * @return
+     * @throws AppException
+     */
+    public ResultSet epGetUserComper(String User) throws AppException {
         try {
             String sql = "SELECT USUARIOS"
                     + "FROM USUARIOS"
@@ -38,7 +43,6 @@ public class UsuariosDAC extends SQLiteDataHelper {
             Connection conn = getConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, "%" + User.trim() + "%");
-            // System.out.println(sql);
             return pstmt.executeQuery();
         } catch (SQLException e) {
             throw new AppException(e, getClass());

@@ -10,18 +10,22 @@ import DataAccess.UsuariosDAC;
 import Framework.AppException;
 
 public class UsuariosBL {
-
-    public List<Usuarios> getAllUsuarios() throws AppException {
+    /**
+     * 
+     * @return
+     * @throws AppException
+     */
+    public List<Usuarios> epGetAllUsuarios() throws AppException {
         try {
-            UsuariosDAC usuariosDAC = new UsuariosDAC();
-            List<Usuarios> lstUsuarios = new ArrayList<Usuarios>();
+            UsuariosDAC epUsuariosDAC = new UsuariosDAC();
+            List<Usuarios> epLstUsuarios = new ArrayList<Usuarios>();
 
-            ResultSet rs = usuariosDAC.getAllUsers();
+            ResultSet rs = epUsuariosDAC.epGetAllUsers();
             while (rs.next()) {
                 Usuarios us = new Usuarios(rs.getString("USUARIOS"), rs.getString("CONTRASENA"));
-                lstUsuarios.add(us);
+                epLstUsuarios.add(us);
             }
-            return lstUsuarios;
+            return epLstUsuarios;
         } catch (SQLException e) {
             throw new AppException(e, getClass(), "getAllUsers");
         }

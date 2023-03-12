@@ -50,27 +50,8 @@ public abstract class SQLiteDataHelper {
         conn = getConnection(); // jdbc:sqlite:data\\TinderPet.db
         stmt = conn.createStatement(); // CRUD : select * ...
         rs = stmt.executeQuery(sql); //
-        // }
-        // catch (SQLException e) {
-        // System.out.println(e.getMessage());
-        // throw new AppException(APP.GLOBAL.DB_EXCEPTION,"Failed to connect to
-        // database", e);
-        // }
         return rs;
     }
-
-    // public void onOpen(SQLiteDatabase db) {}
-    // /**
-    // * Close any open database object.
-    // */
-    // public synchronized void close() {
-    // if (mIsInitializing) throw new IllegalStateException("Closed during
-    // initialization");
-    // if (mDatabase != null && mDatabase.isOpen()) {
-    // mDatabase.close();
-    // mDatabase = null;
-    // }
-    // }
 }
 
 /*

@@ -25,24 +25,27 @@ public class AppConfiguration {
 
     public static String getDBName() {
         if (config == null) {
-            System.out.println(">> (issue) AppConfiguration.getDB_NAME(), llamar primero a AppConfiguration.load() y agregar DB_NAME en CONFIG ");
+            System.out.println(
+                    ">> (issue) AppConfiguration.getEP_NAME(), llamar primero a AppConfiguration.load() y agregar EP_NAME en CONFIG ");
             return "";
         }
-        return config.getProperty(APP.GLOBAL.DB_NAME, "");
+        return config.getProperty(APP.GLOBAL.EP_NAME, "");
     }
 
     public static String getDBPathConnection() {
         if (config == null) {
-            System.out.println(">> (issue) AppConfiguration.DB_PATH(), llamar primero a AppConfiguration.load() y agregar DB_PATH en CONFIG ");
+            System.out.println(
+                    ">> (issue) AppConfiguration.EP_PATH(), llamar primero a AppConfiguration.load() y agregar EP_PATH en CONFIG ");
             return "";
         }
-        if (!config.containsKey(APP.GLOBAL.DB_PATH)) {
-            System.out.println(">> (issue) AppConfiguration.DB_PATH(), la clave DB_PATH no está presente en la configuración.");
+        if (!config.containsKey(APP.GLOBAL.EP_PATH)) {
+            System.out.println(
+                    ">> (issue) AppConfiguration.DB_PATH(), la clave DB_PATH no está presente en la configuración.");
             return "";
         }
-        String dbPath = config.getProperty(APP.GLOBAL.DB_PATH, "");
+        String dbPath = config.getProperty(APP.GLOBAL.EP_PATH, "");
         if (dbPath.isEmpty()) {
-            System.out.println(">> (issue) AppConfiguration.DB_PATH(), el valor de DB_PATH está vacío.");
+            System.out.println(">> (issue) AppConfiguration.EP_PATH(), el valor de EP_PATH está vacío.");
             return "";
         }
         String dbName = getDBName();
