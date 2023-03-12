@@ -1,10 +1,10 @@
 package BussinessLogic;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import BussinessLogic.Entities.Usuarios;
 import Framework.AppException;
-
 
 public class LoginWindow extends JFrame implements ActionListener {
 
@@ -12,6 +12,7 @@ public class LoginWindow extends JFrame implements ActionListener {
     private JTextField usernameField;
     private JPasswordField passwordField;
     private JButton loginButton;
+    private int intentos = 0;
 
     public LoginWindow() {
         super("Login");
@@ -42,20 +43,21 @@ public class LoginWindow extends JFrame implements ActionListener {
         add(panel);
     }
 
-    private int intentos = 0;
-
     @Override
     public void actionPerformed(ActionEvent e) {
+        // Necesariio para encriptar
+        Encriptador encriptador = new Encriptador();
         // Obtiene el usuario y la contraseña ingresados por el usuario
         String username = usernameField.getText();
         String password = String.valueOf(passwordField.getPassword());
-    
+
         // Verifica si el usuario y la contraseña son válidos
         UsuariosBL usuarios = new UsuariosBL();
         boolean usuarioEncontrado = false;
         try {
             for (Usuarios user : usuarios.getAllUsuarios()) {
-                if (username.equals(user.getEpUsuario()) && password.equals(user.getEpContrasena())) {
+                if (username.equals(user.getEpUsuario())
+                        && password.equals(encriptador.desencriptar(user.getEpContrasena()))) {
                     JOptionPane.showMessageDialog(this, "Bienvenido " + username + "!");
                     dispose(); // cierra la ventana de inicio de sesión
                     usuarioEncontrado = true;
@@ -64,8 +66,14 @@ public class LoginWindow extends JFrame implements ActionListener {
             }
         } catch (AppException e1) {
             e1.printStackTrace();
+        } catch (HeadlessException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        } catch (Exception e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
         }
-    
+
         // Incrementa el contador de intentos si el usuario no es válido
         if (!usuarioEncontrado) {
             intentos++;
@@ -77,5 +85,5 @@ public class LoginWindow extends JFrame implements ActionListener {
             }
         }
     }
-    
+
 }

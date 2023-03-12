@@ -22,8 +22,8 @@ public class DataHelper {
   }
 }
 /**
- * Este código utiliza el controlador JDBC para conectarse a una 
- * base de datos en la nube. Puedes reemplazar los valores DB_CONNECTION, 
- * DB_USER y DB_PASSWORD con tus propios valores correspondientes para 
+ * Este código utiliza el controlador JDBC para conectarse a una
+ * base de datos en la nube. Puedes reemplazar los valores DB_CONNECTION,
+ * DB_USER y DB_PASSWORD con tus propios valores correspondientes para
  * conectarte a tu base de datos en la nube.
  */

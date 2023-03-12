@@ -21,7 +21,7 @@ public class Encriptador {
         return Base64.getEncoder().encodeToString(textoEncriptado);
     }
 
-    public static String desencriptar(String textoEncriptado) throws Exception {
+    public String desencriptar(String textoEncriptado) throws Exception {
         Cipher cipher = Cipher.getInstance(ALGORITMO);
         SecretKeySpec llave = new SecretKeySpec(LLAVE_SECRETA.getBytes(), "AES");
         IvParameterSpec iv = new IvParameterSpec(IV);
